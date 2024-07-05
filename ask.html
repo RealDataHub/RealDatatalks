@@ -22,7 +22,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RealDataTalks 404</title>
+    <title>RealDataTalks Contact Form</title>
 
     <!--====== Favicon Icon ======-->
     <link
@@ -87,8 +87,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>
-
-  <script>
+	  
+	  <script>
     const form = document.getElementById('contactForm');
     form.addEventListener('submit', function(e) {
       e.preventDefault();
@@ -103,8 +103,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       .then(response => response.json())
       .then(data => {
         if (data.result === 'success') {
-          alert('Form successfully submitted!');
-          form.reset();
+          window.location.href = 'success.html'; // Redirect to the success page
         } else {
           alert('There was an error submitting the form.');
         }
@@ -112,6 +111,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       .catch(error => console.error('Error:', error));
     });
   </script>
+	  
+	  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
 
     <!-- ====== All Javascript Files ====== -->
     <script src="assets/js/bootstrap.bundle.min.js"></script>
