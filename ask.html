@@ -44,57 +44,118 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-    <div class="container mt-5">
-    <h2>Contact Form</h2>
-    <form id="contactForm">
-      <div class="mb-3">
-        <label for="salutation" class="form-label">Salutation</label>
-        <select class="form-select" id="salutation" name="salutation" required>
-          <option value="">Choose...</option>
-			<option value="Dr.">Sheikh</option>
-			<option value="Mr.">Hon.</option>
-          <option value="Mr.">Mr.</option>
-          <option value="Ms.">Ms.</option>
-          <option value="Mrs.">Mrs.</option>
-          <option value="Dr.">Dr.</option>
-			<option value="Dr.">Prof.</option>
-        </select>
+   <section id="contact" class="ud-contact">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-xl-8 col-lg-7">
+            <div class="ud-contact-content-wrapper">
+              <div class="ud-contact-title">
+                <span>CONTACT US</span>
+                <h2>
+                  Let’s talk about <br />
+                  Love to hear from you!
+                </h2>
+              </div>
+              <div class="ud-contact-info-wrapper">
+                <div class="ud-single-info">
+                  <div class="ud-info-icon">
+                    <i class="lni lni-map-marker"></i>
+                  </div>
+                  <div class="ud-info-meta">
+                    <h5>Our Location</h5>
+                    <p>08005, Poblenou, Barcelona</p>
+                  </div>
+                </div>
+                <div class="ud-single-info">
+                  <div class="ud-info-icon">
+                    <i class="lni lni-envelope"></i>
+                  </div>
+                  <div class="ud-info-meta">
+                    <h5>How Can We Help?</h5>
+                    <p>ask@realdatatalks.com</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+			
+          <!-- send form -->
+    <div class="col-xl-4 col-lg-5">
+      <div class="ud-contact-form-wrapper wow fadeInUp" data-wow-delay=".2s">
+        <h2>Ask us about your case</h2>
+        <form id="contactForm">
+          <div class="mb-3">
+            <label for="salutation" class="form-label">Salutation</label>
+            <select class="form-select" id="salutation" name="salutation" placeholder="Sir" required>
+              <option value="">Choose...</option>
+              <option value="Sheikh">Sheikh</option>
+              <option value="Hon.">Hon.</option>
+              <option value="Mr.">Mr.</option>
+              <option value="Ms.">Ms.</option>
+              <option value="Mrs.">Mrs.</option>
+              <option value="Sir">Sir</option>
+              <option value="Dr.">Dr.</option>
+              <option value="Prof.">Prof.</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="John" required>
+          </div>
+          <div class="mb-3">
+            <label for="surname" class="form-label">Surname</label>
+            <input type="text" class="form-control" id="surname" name="surname" placeholder="Lennon" required>
+          </div>
+          <div class="mb-3">
+            <label for="mainQuestion" class="form-label">Main Question</label>
+            <textarea class="form-control" id="mainQuestion" name="mainQuestion" placeholder="How to get mortgage in Spain?" rows="3" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="topic" class="form-label">Topic</label>
+            <select class="form-select" id="topic" name="topic" required>
+              <option value="">Choose...</option>
+              <option value="immigration and visa">immigration and visa</option>
+              <option value="business establishment or purchase">establish or buy business</option>
+              <option value="search and buy real estate">search and buy real estate</option>
+              <option value="sell purchase">sell real estate</option>
+				<option value="sell purchase">mortgage and broker</option>
+              <option value="design">design</option>
+              <option value="renovation">renovation</option>
+              <option value="other">other</option>
+            </select>
+            <input type="text" class="form-control mt-2" id="otherTopic" name="otherTopic" placeholder="Please specify" style="display: none;">
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="tel" class="form-control" id="phone" name="phone" placeholder="+441214541860" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="johnlennon@yahoo.uk" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
       </div>
-      <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" name="name" required>
-      </div>
-      <div class="mb-3">
-        <label for="surname" class="form-label">Surname</label>
-        <input type="text" class="form-control" id="surname" name="surname" required>
-      </div>
-      <div class="mb-3">
-        <label for="mainQuestion" class="form-label">Main Question</label>
-        <textarea class="form-control" id="mainQuestion" name="mainQuestion" rows="3" required></textarea>
-      </div>
-      <div class="mb-3">
-        <label for="topic" class="form-label">Topic</label>
-        <input type="text" class="form-control" id="topic" name="topic" required>
-      </div>
-      <div class="mb-3">
-        <label for="phone" class="form-label">Phone</label>
-        <input type="tel" class="form-control" id="phone" name="phone" required>
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email" required>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-  </div>
-	  
-	  <script>
+    </div>
+
+  <script>
+    document.getElementById('topic').addEventListener('change', function () {
+      const otherTopic = document.getElementById('otherTopic');
+      if (this.value === 'other') {
+        otherTopic.style.display = 'block';
+        otherTopic.required = true;
+      } else {
+        otherTopic.style.display = 'none';
+        otherTopic.required = false;
+      }
+    });
+
     const form = document.getElementById('contactForm');
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
       const data = new FormData(form);
-      const action = 'https://script.google.com/macros/s/AKfycbzK_scXiTY7D_V8xXUETQZquWcfMUn10b1h2OcD3Nl_/dev'; // Replace with your Google Script URL
+      const action = 'https://script.google.com/macros/s/AKfycbzm-GsWaWayWnFi13hvRKku-IGsaPBQNdPsDh9PPnNXJAjJfYgu2W1pmHS4XrRYajKJUA/exec';
 
       fetch(action, {
         method: 'POST',
@@ -102,17 +163,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       })
       .then(response => response.json())
       .then(data => {
+        console.log('Success:', data); // Debugging: Log the response
         if (data.result === 'success') {
-          window.location.href = 'success.html'; // Redirect to the success page
+          alert('Form successfully submitted!');
+          form.reset();
         } else {
           alert('There was an error submitting the form.');
         }
       })
-      .catch(error => console.error('Error:', error));
+      .catch(error => {
+        console.error('Error:', error); // Debugging: Log the error
+        alert('There was an error submitting the form.');
+      });
     });
   </script>
-	  
-	  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+
+      </div>
+      </div>
+    </section>
 
     <!-- ====== All Javascript Files ====== -->
     <script src="assets/js/bootstrap.bundle.min.js"></script>
