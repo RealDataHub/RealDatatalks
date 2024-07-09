@@ -977,11 +977,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           </div>
 			
-          <!-- send form -->
+         <!-- send form 
+source - https://github.com/levinunnink/html-form-to-google-sheet
+-->
+			
     <div class="col-xl-4 col-lg-5">
       <div class="ud-contact-form-wrapper wow fadeInUp" data-wow-delay=".2s">
         <h2>Ask us about your case</h2>
-        <form id="contactForm">
+        <form id="contactForm"
+			  method="POST" 
+  action="https://script.google.com/macros/s/AKfycbzm-GsWaWayWnFi13hvRKku-IGsaPBQNdPsDh9PPnNXJAjJfYgu2W1pmHS4XrRYajKJUA/exec">
           <div class="mb-3">
             <label for="salutation" class="form-label">Salutation</label>
             <select class="form-select" id="salutation" name="salutation" placeholder="Sir" required>
@@ -1036,7 +1041,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-  <script>
+  <!--script>
     document.getElementById('topic').addEventListener('change', function () {
       const otherTopic = document.getElementById('otherTopic');
       if (this.value === 'other') {
@@ -1053,7 +1058,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       e.preventDefault();
 
       const data = new FormData(form);
-      const action = 'https://script.google.com/macros/s/AKfycbzK_scXiTY7D_V8xXUETQZquWcfMUn10b1h2OcD3Nl_/dev';
+      const action = 'https://script.google.com/macros/s/AKfycbzm-GsWaWayWnFi13hvRKku-IGsaPBQNdPsDh9PPnNXJAjJfYgu2W1pmHS4XrRYajKJUA/exec';
 
       fetch(action, {
         method: 'POST',
@@ -1074,7 +1079,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         alert('There was an error submitting the form.');
       });
     });
-  </script>
+  </script-->
 
       </div>
       </div>
