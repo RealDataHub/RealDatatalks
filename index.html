@@ -1039,45 +1039,48 @@ source - https://github.com/levinunnink/html-form-to-google-sheet
   </div>
 </div>
 
-  <!--script>
-    document.getElementById('topic').addEventListener('change', function () {
-      const otherTopic = document.getElementById('otherTopic');
-      if (this.value === 'other') {
-        otherTopic.style.display = 'block';
-        otherTopic.required = true;
-      } else {
+  <script>
+  document.getElementById('topic').addEventListener('change', function () {
+    const otherTopic = document.getElementById('otherTopic');
+    if (this.value === 'other') {
+      otherTopic.style.display = 'block';
+      otherTopic.required = true;
+    } else {
+      otherTopic.style.display = 'none';
+      otherTopic.required = false;
+    }
+  });
+
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const data = new FormData(form);
+    const action = 'https://script.google.com/macros/s/AKfycbz9F6x2QkoKHjQmoHMXjcCqb9Z27TDJo5gSa6vLiL9CSaNs9a9PaUjPen6-y20DOQFDCQ/exec';
+
+    fetch(action, {
+      method: 'POST',
+      body: data,
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data); // Debugging: Log the response
+      if (data.result === 'success') {
+        alert('Form successfully submitted!');
+        form.reset();
+        const otherTopic = document.getElementById('otherTopic');
         otherTopic.style.display = 'none';
         otherTopic.required = false;
-      }
-    });
-
-    const form = document.getElementById('contactForm');
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      const data = new FormData(form);
-      const action = 'https://script.google.com/macros/s/AKfycbzm-GsWaWayWnFi13hvRKku-IGsaPBQNdPsDh9PPnNXJAjJfYgu2W1pmHS4XrRYajKJUA/exec';
-
-      fetch(action, {
-        method: 'POST',
-        body: data,
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Success:', data); // Debugging: Log the response
-        if (data.result === 'success') {
-          alert('Form successfully submitted!');
-          form.reset();
-        } else {
-          alert('There was an error submitting the form.');
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error); // Debugging: Log the error
+      } else {
         alert('There was an error submitting the form.');
-      });
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error); // Debugging: Log the error
+      alert('There was an error submitting the form.');
     });
-  </script-->
+  });
+</script>
 
       </div>
       </div>
