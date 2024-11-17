@@ -117,7 +117,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     z-index: 3;
   }
 		
-		.embed-responsive {
+	.embed-responsive {
     position: relative;
     display: block;
     width: 100%;
@@ -139,7 +139,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     height: 100%;
     border: 0;
   }
-		
+
     </style>
   </head>
   <body>
@@ -993,12 +993,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 source - https://github.com/levinunnink/html-form-to-google-sheet
 -->
 			
-    <div class="col-xl-4 col-lg-5">
+  <div class="col-xl-4 col-lg-5">
   <div class="ud-contact-form-wrapper wow fadeInUp" data-wow-delay=".2s">
-    <h2>Ask us about investment you need</h2>
+    <h2>Ask us</h2>
     <form id="contactForm" method="POST" 
-		  action="https://script.google.com/macros/s/AKfycbz9F6x2QkoKHjQmoHMXjcCqb9Z27TDJo5gSa6vLiL9CSaNs9a9PaUjPen6-y20DOQFDCQ/exec">
-      <div class="mb-3">
+          action="https://script.google.com/macros/s/AKfycbz9F6x2QkoKHjQmoHMXjcCqb9Z27TDJo5gSa6vLiL9CSaNs9a9PaUjPen6-y20DOQFDCQ/exec">
+      <div class="row mb-3">
+		  <div class="col-md-6">
         <label for="salutation" class="form-label">Salutation</label>
         <select class="form-select" id="salutation" name="salutation" required>
           <option value="">Choose...</option>
@@ -1011,14 +1012,15 @@ source - https://github.com/levinunnink/html-form-to-google-sheet
           <option value="Dr.">Dr.</option>
           <option value="Prof.">Prof.</option>
         </select>
-      </div>
-      <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" name="name" required>
-      </div>
-      <div class="mb-3">
-        <label for="surname" class="form-label">Surname</label>
-        <input type="text" class="form-control" id="surname" name="surname" required>
+			  </div>
+        <div class="col-md-6">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+		  </div>
+	<div class="mb-3">
+          <label for="surname" class="form-label">Surname</label>
+          <input type="text" class="form-control" id="surname" name="surname" required>
       </div>
       <div class="mb-3">
         <label for="mainQuestion" class="form-label">Main Question</label>
@@ -1051,6 +1053,7 @@ source - https://github.com/levinunnink/html-form-to-google-sheet
     </form>
   </div>
 </div>
+
 
 <script>
   document.getElementById('topic').addEventListener('change', function () {
@@ -1099,7 +1102,8 @@ source - https://github.com/levinunnink/html-form-to-google-sheet
       </div>
     </section>
 <!-- ====== Contact End ====== -->
-
+  
+	  
     <!-- ====== Footer Start ====== -->
     <footer class="ud-footer wow fadeInUp" data-wow-delay=".15s">
       <div class="shape shape-1">
