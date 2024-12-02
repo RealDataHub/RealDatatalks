@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Auto-Increment Row ID</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script>
+      // Initialize a row ID counter
+      let rowID = 0;
+
+      function AddRow() {
+        // Increment the row ID
+        rowID++;
+
+        // Retrieve values from the form
+        const salutation = document.getElementById("salutation").value;
+        const name = document.getElementById("name").value;
+        const surname = document.getElementById("surname").value;
+        const mainQuestion = document.getElementById("mainQuestion").value;
+        const topic = document.getElementById("topic").value;
+        const otherTopic = document.getElementById("otherTopic").value;
+        const phone = document.getElementById("phone").value;
+        const email = document.getElementById("email").value;
+
+        // Check if all required fields are filled
+        if (
+          salutation &&
+          name &&
+          surname &&
+          mainQuestion &&
+          topic &&
+          phone &&
+          email
+        ) {
+          // Send data to Google Apps Script, including the row ID
+          google.script.run.AddRecord(
+            rowID, // Pass the auto-incremented row ID
+            salutation,
+            name,
+            surname,
+            mainQuestion,
+            topic,
+            otherTopic,
+            phone,
+            email
+          );
+
+          // Clear form fields after submission
+          document.getElementById("salutation").value = "";
+          document.getElementById("name").value = "";
+          document.getElementById("surname").value = "";
+          document.getElementById("mainQuestion").value = "";
+          document.getElementById("topic").value = "";
+          document.getElementById("otherTopic").value = "";
+          document.getElementById("phone").value = "";
+          document.getElementById("email").value = "";
+
+          document.getElementById("display_error").innerHTML = "";
+        } else {
+          // Show error message if validation fails
+          document.getElementById("display_error").innerHTML =
+            "Please fill out all required fields!";
+        }
+      }
+
+      // Show/Hide the "Other Topic" field based on topic selection
+      function toggleOtherTopic() {
+        const topic = document.getElementById("topic").value;
+        const otherTopicField = document.getElementById("otherTopic");
+        if (topic === "other") {
+          otherTopicField.style.display = "block";
+        } else {
+          otherTopicField.style.display = "none";
+          otherTopicField.value = "";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div style="padding: 10px;">
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="salutation">Salutation</label>
+            <select class="form-select form-control" id="salutation" name="salutation" required>
+              <option value="">Choose...</option>
+              <option value="Sheikh">Sheikh</option>
+              <option value="Hon.">Hon.</option>
+              <option value="Mr.">Mr.</option>
+              <option value="Ms.">Ms.</option>
+              <option value="Mrs.">Mrs.</option>
+              <option value="Sir">Sir</option>
+              <option value="Dr.">Dr.</option>
+              <option value="Prof.">Prof.</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" class="form-control" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="surname">Surname</label>
+          <input type="text" id="surname" name="surname" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+          <label for="mainQuestion">Main Question</label>
+          <textarea id="mainQuestion" name="main_question" class="form-control" rows="3" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="topic">Topic</label>
+          <select
+            class="form-select form-control"
+            id="topic"
+            name="topic"
+            onchange="toggleOtherTopic()"
+            required
+          >
+            <option value="">Choose...</option>
+            <option value="immigration and visa">Visas and Taxes</option>
+            <option value="business establishment or purchase">Establish Company in Spain</option>
+            <option value="search and buy real estate">Buy Property</option>
+            <option value="sell purchase">Sell Property</option>
+            <option value="mortgage and broker">Mortgage</option>
+            <option value="design">Design and Renovation</option>
+            <option value="renovation">Renovation</option>
+            <option value="other">Property Maintenance</option>
+          </select>
+          <input
+            type="text"
+            id="otherTopic"
+            name="other_topic"
+            class="form-control mt-2"
+            placeholder="Please specify"
+            style="display: none;"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+          <input type="button" value="Submit" class="btn btn-primary" onclick="AddRow()" />
+          <div id="display_error" style="color: red;"></div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
