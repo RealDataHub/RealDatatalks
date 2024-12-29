@@ -1,56 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2E348VSQ5G"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-2E348VSQ5G');
-  </script>
-  
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-538VHG6H');</script>
-  <!-- End Google Tag Manager -->
-
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RealDataTalks Request Form</title>
   
   <!-- Bootstrap CSS -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   
   <!-- Favicon -->
   <link rel="shortcut icon" href="assets/images/re.svg" type="image/svg" />
   
   <style>
-    /* Styling for default placeholder values */
-    .placeholder {
-      font-style: italic;
-      color: grey;
-    }
-
-    /* Adding space between form inputs */
-    .mb-3 {
-      margin-bottom: 1.5rem;
-    }
-
-    /* Styling for the submit button */
-    .btn {
-      font-size: 14px;
-      padding: 10px 20px;
-    }
-    .vh-50 {
-    }
+    .placeholder { font-style: italic; color: grey; }
+    .mb-3 { margin-bottom: 1.5rem; }
+    .btn { font-size: 14px; padding: 10px 20px; }
+    .vh-50 {}
   </style>
 </head>
 <body>
@@ -59,11 +25,8 @@
     <div class="row justify-content-center">
       <div class="col-xl-6 col-lg-8">
         <div class="ud-contact-form-wrapper border rounded p-4 mt-5">
-          <!-- Contact Form Motto -->
           <div class="d-flex flex-column justify-content-center align-items-center vh-50 text-center">
-            <h1 class="ud-hero-title">
-              Real Data Talks
-            </h1>
+            <h1 class="ud-hero-title">Real Data Talks</h1>
             <h3 class="ud-hero-desc" style="margin-bottom: 10px;">
               Real Estate Projects Hub<br>
               <span style="font-size: 0.75em;">Big Data &gt; Business Insights &gt; Investments</span><br>
@@ -71,72 +34,11 @@
             </h3>
           </div>
           
-          <!-- Contact Form Text -->
           <h2 class="text-center mb-4">Ask Us</h2>
           <form id="contactForm" method="POST">
-            <!-- Salutation and Name -->
-            <div class="row mb-3">
-              <div class="col-md-6">
-                <label for="salutation" class="form-label">Salutation</label>
-                <select class="form-select" id="salutation" name="salutation" required>
-                  <option value="Mr." selected>Mr.</option>
-                  <option value="Sheikh">Sheikh</option>
-                  <option value="Hon.">Hon.</option>
-                  <option value="Ms.">Ms.</option>
-                  <option value="Mrs.">Mrs.</option>
-                  <option value="Sir">Sir</option>
-                  <option value="Dr.">Dr.</option>
-                  <option value="Prof.">Prof.</option>
-                </select>
-              </div>
-              <div class="col-md-6">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control placeholder" id="name" name="name" value="Lucky" required>
-              </div>
-            </div>
+            <!-- Form fields... -->
+            <!-- Salutation and Name, Surname, Question, etc. -->
 
-            <!-- Surname -->
-            <div class="mb-3">
-              <label for="surname" class="form-label">Surname</label>
-              <input type="text" class="form-control placeholder" id="surname" name="surname" value="Lucciano" required>
-            </div>
-
-            <!-- Main Question -->
-            <div class="mb-3">
-              <label for="mainQuestion" class="form-label">Main Question</label>
-              <textarea class="form-control placeholder" id="mainQuestion" name="main_question" rows="3" required>looking for legal support to buy a villa on Ibiza</textarea>
-            </div>
-
-            <!-- Topic -->
-            <div class="mb-3">
-              <label for="topic" class="form-label">Topic</label>
-              <select class="form-select" id="topic" name="topic" required>
-                <option value="">Choose...</option>
-                <option value="immigration and visa">Visas and Taxes</option>
-                <option value="business establishment or purchase">Establish Company in Spain</option>
-                <option value="search and buy real estate" selected>Buy Property</option>
-                <option value="sell purchase">Sell Property</option>
-                <option value="mortgage and broker">Mortgage</option>
-                <option value="design">Design and Renovation</option>
-                <option value="renovation">Renovation</option>
-                <option value="other">Property Maintenance</option>
-              </select>
-              <input type="text" class="form-control mt-2" id="otherTopic" name="other_topic" placeholder="Please specify" style="display: none;">
-            </div>
-
-            <!-- Phone -->
-            <div class="mb-3">
-              <label for="phone" class="form-label">Phone</label>
-              <input type="tel" class="form-control placeholder" id="phone" name="phone" value="+1 718 111 1111" required>
-            </div>
-
-            <!-- Email -->
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control placeholder" id="email" name="email" value="luckylucciano@yahoo.com" required>
-            </div>
-
-            <!-- Submit Button -->
             <div class="form-group text-center">
               <button type="submit" class="btn btn-primary">Submit</button>
               <div id="display_error" style="color: red;"></div>
@@ -148,7 +50,6 @@
     </div>
   </div>
 
-  <!-- Script -->
   <script>
     const form = document.getElementById('contactForm');
     const scriptURL = 'https://script.google.com/macros/s/AKfycbycCEABZ75veoNniMdVrhAzQRKxTB5nQ_wFK8WqstdYeKMw3I-Ma_cuBX_gWQv9c3KR/exec';
@@ -157,35 +58,27 @@
       e.preventDefault(); // Prevent default form submission
 
       const formData = new FormData(form);
-
-      // Convert FormData to an object
       const data = Object.fromEntries(formData.entries());
-
-      // Force phone number to be a string
-      data.phone = `'${data.phone}`; // Add a leading single quote to make it a string in Google Sheets
+      data.phone = `'${data.phone}`; // Force phone to be string
 
       fetch(scriptURL, { 
         method: 'POST',
-        body: new URLSearchParams(data), // Convert object back to URLSearchParams
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
+        body: new URLSearchParams(data),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
       })
       .then(response => {
         alert('Form submitted successfully!');
         form.reset(); // Reset the form after submission
 
-        // Notify the parent window
-        window.parent.postMessage('formSubmitted', '*');
+        // Send message to the parent window to close the modal and unblock content
+        window.parent.postMessage({ action: 'closePopup' }, '*');
       })
       .catch(error => {
         alert('Error submitting the form: ' + error.message);
       });
     });
   </script>
-  <!-- End Script -->
 
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
