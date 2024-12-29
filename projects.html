@@ -71,51 +71,13 @@
     </div>
   </div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="registrationModalLabel">Registration</h5>
-        </div>
-        <div class="modal-body">
-          <iframe src="contact.html" id="registrationIframe"></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-
+ 
   <!-- JS -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 
   <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const modal = new bootstrap.Modal(document.getElementById('registrationModal'), {
-      backdrop: 'static', // Prevents closing by clicking outside the modal
-      keyboard: false      // Disables closing with the keyboard (Esc key)
-    });
-    const mainContent = document.getElementById('mainContent');
-    const closeButton = document.querySelector('.btn-close');
-
-    // Show the modal and disable main content
-    modal.show();
-    mainContent.classList.add('disabled-content');
-
-    // Prevent the modal from closing using the close button (e.g., x button)
-    closeButton.addEventListener('click', (e) => {
-      e.preventDefault();  // Prevent modal from closing
-    });
-
-    // Listen for form submission event inside the iframe
-    window.addEventListener('message', (event) => {
-      // Ensure the message comes from the iframe (check event origin and data)
-      if (event.origin === window.location.origin && event.data.action === 'formSubmitted') {
-        modal.hide(); // Hide the modal after form submission
-        mainContent.classList.remove('disabled-content'); // Enable main content again
-      }
-    });
-  });
+ 
 </script>
 
 
