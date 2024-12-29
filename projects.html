@@ -124,20 +124,18 @@
       const modal = new bootstrap.Modal(document.getElementById('registrationModal'));
       const mainContent = document.getElementById('mainContent');
       const iframe = document.getElementById('registrationIframe');
+      const closeButton = document.querySelector('.btn-close');
 
-      // Disable main content when modal is shown
+      // Show the modal and disable main content
       modal.show();
       mainContent.classList.add('disabled-content');
 
-      // Prevent modal from being closed
-      const closeButton = document.querySelector('.btn-close');
-      if (closeButton) {
-        closeButton.addEventListener('click', (e) => {
-          e.preventDefault(); // Prevent modal close
-        });
-      }
+      // Disable modal close button
+      closeButton.addEventListener('click', (e) => {
+        e.preventDefault();  // Prevent modal from closing
+      });
 
-      // Listen for form submission inside the iframe (ask.html)
+      // Listen for form submission event inside the iframe
       iframe.contentWindow.addEventListener('message', (event) => {
         if (event.data === 'formSubmitted') {
           modal.hide(); // Hide modal after form submission
