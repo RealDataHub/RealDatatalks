@@ -49,8 +49,8 @@
       font-size: 14px;
       padding: 10px 20px;
     }
-  .vh-50 {
-}
+    .vh-50 {
+    }
   </style>
 </head>
 <body>
@@ -59,19 +59,19 @@
     <div class="row justify-content-center">
       <div class="col-xl-6 col-lg-8">
         <div class="ud-contact-form-wrapper border rounded p-4 mt-5">
-			<!-- Contact Form Motto -->
-			
-			<div class="d-flex flex-column justify-content-center align-items-center vh-50 text-center">
-  <h1 class="ud-hero-title">
-    Real Data Talks
-  </h1>
-  <h3 class="ud-hero-desc" style="margin-bottom: 10px;">
-    Real Estate Projects Hub<br>
-    <span style="font-size: 0.75em;">Big Data &gt; Business Insights &gt; Investments</span><br>
-    <span style="font-size: 0.5em;">Powering Real Estate Projects with Data Science</span>
-  </h3>
-</div>
-			<!-- Contact Form Text -->
+          <!-- Contact Form Motto -->
+          <div class="d-flex flex-column justify-content-center align-items-center vh-50 text-center">
+            <h1 class="ud-hero-title">
+              Real Data Talks
+            </h1>
+            <h3 class="ud-hero-desc" style="margin-bottom: 10px;">
+              Real Estate Projects Hub<br>
+              <span style="font-size: 0.75em;">Big Data &gt; Business Insights &gt; Investments</span><br>
+              <span style="font-size: 0.5em;">Powering Real Estate Projects with Data Science</span>
+            </h3>
+          </div>
+          
+          <!-- Contact Form Text -->
           <h2 class="text-center mb-4">Ask Us</h2>
           <form id="contactForm" method="POST">
             <!-- Salutation and Name -->
@@ -91,16 +91,14 @@
               </div>
               <div class="col-md-6">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control placeholder" id="name" name="name" 
-                       value="Lucky" required>
+                <input type="text" class="form-control placeholder" id="name" name="name" value="Lucky" required>
               </div>
             </div>
 
             <!-- Surname -->
             <div class="mb-3">
               <label for="surname" class="form-label">Surname</label>
-              <input type="text" class="form-control placeholder" id="surname" name="surname" 
-                     value="Lucciano" required>
+              <input type="text" class="form-control placeholder" id="surname" name="surname" value="Lucciano" required>
             </div>
 
             <!-- Main Question -->
@@ -123,22 +121,19 @@
                 <option value="renovation">Renovation</option>
                 <option value="other">Property Maintenance</option>
               </select>
-              <input type="text" class="form-control mt-2" id="otherTopic" name="other_topic" 
-                     placeholder="Please specify" style="display: none;">
+              <input type="text" class="form-control mt-2" id="otherTopic" name="other_topic" placeholder="Please specify" style="display: none;">
             </div>
 
             <!-- Phone -->
             <div class="mb-3">
               <label for="phone" class="form-label">Phone</label>
-              <input type="tel" class="form-control placeholder" id="phone" name="phone" 
-                     value="+1 718 111 1111" required>
+              <input type="tel" class="form-control placeholder" id="phone" name="phone" value="+1 718 111 1111" required>
             </div>
 
             <!-- Email -->
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control placeholder" id="email" name="email" 
-                     value="luckylucciano@yahoo.com" required>
+              <input type="email" class="form-control placeholder" id="email" name="email" value="luckylucciano@yahoo.com" required>
             </div>
 
             <!-- Submit Button -->
@@ -156,38 +151,37 @@
   <!-- Script -->
   <script>
     const form = document.getElementById('contactForm');
-  	const scriptURL = 'https://script.google.com/macros/s/AKfycbycCEABZ75veoNniMdVrhAzQRKxTB5nQ_wFK8WqstdYeKMw3I-Ma_cuBX_gWQv9c3KR/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbycCEABZ75veoNniMdVrhAzQRKxTB5nQ_wFK8WqstdYeKMw3I-Ma_cuBX_gWQv9c3KR/exec';
 
-  form.addEventListener('submit', (e) => {
-  e.preventDefault(); // Prevent default form submission
+    form.addEventListener('submit', (e) => {
+      e.preventDefault(); // Prevent default form submission
 
-  const formData = new FormData(form);
+      const formData = new FormData(form);
 
-  // Convert FormData to an object
-  const data = Object.fromEntries(formData.entries());
+      // Convert FormData to an object
+      const data = Object.fromEntries(formData.entries());
 
-  // Force phone number to be a string
-  data.phone = `'${data.phone}`; // Add a leading single quote to make it a string in Google Sheets
+      // Force phone number to be a string
+      data.phone = `'${data.phone}`; // Add a leading single quote to make it a string in Google Sheets
 
-  fetch(scriptURL, { 
-    method: 'POST',
-    body: new URLSearchParams(data), // Convert object back to URLSearchParams
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }
-  })
-  .then(response => {
-    alert('Form submitted successfully!');
-    form.reset(); // Reset the form after submission
+      fetch(scriptURL, { 
+        method: 'POST',
+        body: new URLSearchParams(data), // Convert object back to URLSearchParams
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      })
+      .then(response => {
+        alert('Form submitted successfully!');
+        form.reset(); // Reset the form after submission
 
-    // Notify the parent window
-    window.parent.postMessage('formSubmitted', '*');
-  })
-  .catch(error => {
-    alert('Error submitting the form: ' + error.message);
-  });
-});
-
+        // Notify the parent window
+        window.parent.postMessage('formSubmitted', '*');
+      })
+      .catch(error => {
+        alert('Error submitting the form: ' + error.message);
+      });
+    });
   </script>
   <!-- End Script -->
 
