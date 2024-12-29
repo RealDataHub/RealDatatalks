@@ -80,12 +80,18 @@
       height: 500px;
       border: none;
     }
+
+    /* Disable interaction with the main content */
+    .disabled-content {
+      pointer-events: none;
+      opacity: 0.5;
+    }
   </style>
 </head>
 <body>
 
   <!-- Main Content -->
-  <div class="container-fluid">
+  <div class="container-fluid" id="mainContent">
     <div class="d-flex">
       <div class="flex-fill" style="background-color: lightgray;">
         <h4>PROJECTS MAP</h4>
@@ -104,10 +110,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="registrationModalLabel">Registration</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <iframe src="contact.html"></iframe>
+          <iframe src="ask.html" id="registrationIframe"></iframe>
         </div>
       </div>
     </div>
@@ -117,12 +122,26 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const modal = new bootstrap.Modal(document.getElementById('registrationModal'));
-      modal.show();
+      const mainContent = document.getElementById('mainContent');
+      const iframe = document.getElementById('registrationIframe');
 
-      // Listen for messages from the iframe
-      window.addEventListener('message', (event) => {
+      // Disable main content when modal is shown
+      modal.show();
+      mainContent.classList.add('disabled-content');
+
+      // Prevent modal from being closed
+      const closeButton = document.querySelector('.btn-close');
+      if (closeButton) {
+        closeButton.addEventListener('click', (e) => {
+          e.preventDefault(); // Prevent modal close
+        });
+      }
+
+      // Listen for form submission inside the iframe (ask.html)
+      iframe.contentWindow.addEventListener('message', (event) => {
         if (event.data === 'formSubmitted') {
-          modal.hide(); // Hide the modal after form submission
+          modal.hide(); // Hide modal after form submission
+          mainContent.classList.remove('disabled-content'); // Enable main content again
         }
       });
     });
