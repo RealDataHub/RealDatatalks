@@ -32,42 +32,67 @@
   <link rel="shortcut icon" href="assets/images/re.svg" type="image/svg" />
   
   <style>
-    /* Styling for default placeholder values */
-    .placeholder {
-      font-style: italic;
-      color: grey;
-    }
+   /* Styling for default placeholder values */
+.placeholder {
+  font-style: italic;
+  color: grey;
+}
 
-    /* Adding space between form inputs */
-    .mb-3 {
-      margin-bottom: 1.5rem;
-    }
+/* Adding space between form inputs */
+.mb-3 {
+  margin-bottom: 1.5rem;
+}
 
-    /* Styling for the submit button */
-    .btn {
-      font-size: 14px;
-      padding: 10px 20px;
-    }
+/* Styling for the submit button */
+.btn {
+  font-size: 14px;
+  padding: 10px 20px;
+}
 
-    .vh-50 {
-      height: 50vh;
-    }
+/* Remove margins and paddings for the title container */
+.ud-contact-form-wrapper .d-flex {
+  margin-top: 0; /* Remove top margin */
+  margin-bottom: 0; /* Remove bottom margin */
+  padding-top: 0; /* Remove padding above */
+  padding-bottom: 0; /* Remove padding below */
+}
 
-    /* Styling for the iframe container (background content) */
-    .iframe-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1; /* Place it behind the form content */
-    }
+.ud-hero-title {
+  margin-top: 0; /* Remove any top margin */
+  margin-bottom: 0; /* Remove any bottom margin */
+}
 
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
+/* Optionally, adjust the vh-50 class for better form alignment */
+.vh-50 {
+  height: 20vh; /* Remove fixed height */
+}
+/* Styling for the iframe container (background content) */
+.iframe-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150%; /* Full height of the viewport */
+  z-index: -1; /* Place it behind the form content */
+}
+
+/* Add a white cover with alpha = 0.5 above the iframe */
+.iframe-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150%; /* Match the height of the iframe */
+  background-color: rgba(255, 255, 255, 0.5); /* White with alpha = 0.5 */
+  z-index: -1; /* Ensure it sits above the iframe */
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
   </style> 
 </head>
 <body>
@@ -76,7 +101,10 @@
     <iframe src="REProject_ColorMap_20241229.html" title="Map Background"></iframe>
   </div>
 	
-  <div class="container">
+	  <!-- White overlay above the iframe -->
+  <div class="iframe-overlay"></div>
+	
+    <div class="container">
     <!-- Contact Form -->
     <div class="row justify-content-center">
       <div class="col-xl-6 col-lg-8">
@@ -86,14 +114,9 @@
             <h1 class="ud-hero-title">
               Real Data Talks' Project Bank
             </h1>
-            <h3 class="ud-hero-desc" style="margin-bottom: 10px;">
-              Real Estate Projects Hub<br>
-              <span style="font-size: 0.75em;">Big Data &gt; Business Insights &gt; Investments</span><br>
-              <span style="font-size: 0.5em;">Powering Real Estate Projects with Data Science</span>
-            </h3>
           </div>
 
-          <h2 class="text-center mb-4">Fill the form to get access to our projects</h2>
+          <h2 class="text-center mb-4">fill the form to get access to our projects</h2>
           <form id="contactForm" method="POST">
             <div class="row mb-3">
               <div class="col-md-6">
@@ -156,7 +179,7 @@
               <div id="display_error" style="color: red;"></div>
             </div>
           </form>
-          <h2 class="text-center mt-4">for any details we respond within 24h!</h2>
+          <h2 class="text-center mt-4">For any details, we respond within 24h!</h2>
         </div>
       </div>
     </div>
