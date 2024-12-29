@@ -111,26 +111,50 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </head>
 <body>
 
+  <!-- Main Content -->
   <div class="container-fluid">
-    <!-- Flex container for dynamic split -->
     <div class="d-flex">
-      <!-- Left Subcontainer -->
       <div class="flex-fill" style="background-color: lightgray;">
         <h4>PROJECTS MAP</h4>
         <iframe src="REProject_ColorMap_20241229.html"></iframe>
       </div>
-      
-      <!-- Right Subcontainer -->
       <div class="flex-fill" style="background-color: lightblue;">
         <h4>PROJECT EXPOSE</h4>
-        <iframe name="pdf-frame" id="pdf-frame" src="assets/pdfs/0001_lloretdemar_aquaviva_b2b.pdf" style="height: 100%; width: 100%;"></iframe>
+        <iframe name="pdf-frame" src="assets/pdfs/0001_lloretdemar_aquaviva_b2b.pdf"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="registrationModalLabel">Registration</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <iframe src="contact.html" style="width: 100%; height: 500px; border: none;"></iframe>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- JS -->
   <script>
-    
+    document.addEventListener('DOMContentLoaded', () => {
+      // Show the modal on page load
+      const modal = new bootstrap.Modal(document.getElementById('registrationModal'));
+      modal.show();
+
+      // Listen for form submission event inside the iframe
+      const iframe = document.querySelector('#registrationModal iframe');
+      iframe.contentWindow.addEventListener('message', (event) => {
+        if (event.data === 'formSubmitted') {
+          modal.hide(); // Hide the modal after form submission
+        }
+      });
+    });
   </script>
 
   <!-- JS Files -->
