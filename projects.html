@@ -91,16 +91,18 @@
 
   <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const modal = new bootstrap.Modal(document.getElementById('registrationModal'));
+    const modal = new bootstrap.Modal(document.getElementById('registrationModal'), {
+      backdrop: 'static', // Prevents closing by clicking outside the modal
+      keyboard: false      // Disables closing with the keyboard (Esc key)
+    });
     const mainContent = document.getElementById('mainContent');
-    const iframe = document.getElementById('registrationIframe');
     const closeButton = document.querySelector('.btn-close');
 
     // Show the modal and disable main content
     modal.show();
     mainContent.classList.add('disabled-content');
 
-    // Disable modal close button
+    // Prevent the modal from closing using the close button (e.g., x button)
     closeButton.addEventListener('click', (e) => {
       e.preventDefault();  // Prevent modal from closing
     });
@@ -108,13 +110,14 @@
     // Listen for form submission event inside the iframe
     window.addEventListener('message', (event) => {
       // Ensure the message comes from the iframe (check event origin and data)
-      if (event.origin === window.location.origin && event.data.action === 'closePopup') {
+      if (event.origin === window.location.origin && event.data.action === 'formSubmitted') {
         modal.hide(); // Hide the modal after form submission
         mainContent.classList.remove('disabled-content'); // Enable main content again
       }
     });
   });
 </script>
+
 
 
 </body>
