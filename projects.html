@@ -1,113 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2E348VSQ5G"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2E348VSQ5G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-2E348VSQ5G');
+  </script>
 
-  gtag('config', 'G-2E348VSQ5G');
-</script>
-	  
-	  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-538VHG6H');</script>
-<!-- End Google Tag Manager -->
-	  
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RealDataTalks</title>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+    w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true; j.src =
+      'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', 'GTM-538VHG6H');</script>
+  <!-- End Google Tag Manager -->
 
-    <!-- Primary Meta Tags -->
-<meta name="title" content="RealDataTalks - big data real estate hub">
-<meta name="goals" content="Powering Real Estate Projects with Data Intelligence">	  
-<meta name="description" content="RealDataTalks - Real Estate Hub for Data Science, Law and Tax, Design and Construction">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RealDataTalks</title>
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://realdatatalks.com">
-<meta property="og:title" content="RealDataTalks - big data real estate hub">
-<meta property="og:description" content="RealDataTalks - Real Estate Hub for Data Science, Law and Tax, Design and Construction">
-<meta property="og:image" content="https://realdatatalks.com">
+  <!-- Meta Tags -->
+  <meta name="description" content="RealDataTalks - Real Estate Hub for Data Science, Law and Tax, Design and Construction">
+  <meta property="og:title" content="RealDataTalks - Big Data Real Estate Hub">
+  <meta property="og:description" content="Powering Real Estate Projects with Data Intelligence">
+  <meta property="og:image" content="https://realdatatalks.com">
+  <meta property="og:url" content="https://realdatatalks.com">
+  <meta property="twitter:title" content="RealDataTalks - Big Data Real Estate Hub">
+  <meta property="twitter:description" content="Powering Real Estate Projects with Data Intelligence">
 
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://realdatatalks.com">
-<meta property="twitter:title" content="RealDataTalks - big data real estate hub">
-<meta property="twitter:description" content="RealDataTalks - Real Estate Hub for Data Science, Law and Tax, Design and Construction">
-<meta property="twitter:image" content="https://realdatatalks.com">
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="assets/images/re.svg" type="image/svg" />
 
-    <!--====== Favicon Icon ======-->
-    <link
-      rel="shortcut icon"
-      href="assets/images/re.svg"
-      type="image/svg"
-    />
-    <!-- CSS Imports -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/animate.css" />
-    <link rel="stylesheet" href="assets/css/lineicons.css" />
-    <link rel="stylesheet" href="assets/css/ud-styles.css" />
-    <style>
-        /* Ensuring full height for the body and html */
-        html, body {
-            height: 100%;
-            margin: 0;
-        }
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/ud-styles.css" />
 
-        /* The main container should take full height of the screen */
-        .container-fluid {
-            display: flex;
-            flex-direction: column;
-            height: 100vh; /* Set container to take the full viewport height */
-        }
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
 
-        /* Flex container for dynamic split between two subcontainers */
-        .d-flex {
-            display: flex;
-            flex-direction: column; /* Default stack vertically on small screens */
-            height: 100%;
-        }
+    .container-fluid {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-        /* Adjust layout to row on medium screens and larger */
-        @media (min-width: 768px) {
-            .d-flex {
-                flex-direction: row; /* Split horizontally on larger screens */
-            }
-        }
+    .d-flex {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
 
-        /* Left subcontainer style */
-        .flex-fill {
-            flex: 1;
-            padding: 20px;
-        }
+    @media (min-width: 768px) {
+      .d-flex {
+        flex-direction: row;
+      }
+    }
 
-        .flex-fill iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+    .flex-fill {
+      flex: 1;
+      padding: 20px;
+    }
 
-        /* Lower part of the page (can be used for additional content or controls) */
-        .lower-part {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
+    .flex-fill iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
 
-        #canvas {
-            max-width: 100%;
-            max-height: 100%;
-        }
-    </style>
+    .modal-body iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+    }
+  </style>
 </head>
 <body>
 
@@ -134,7 +107,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <iframe src="contact.html" style="width: 100%; height: 500px; border: none;"></iframe>
+          <iframe src="contact.html"></iframe>
         </div>
       </div>
     </div>
@@ -143,13 +116,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <!-- JS -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Show the modal on page load
       const modal = new bootstrap.Modal(document.getElementById('registrationModal'));
       modal.show();
 
-      // Listen for form submission event inside the iframe
-      const iframe = document.querySelector('#registrationModal iframe');
-      iframe.contentWindow.addEventListener('message', (event) => {
+      // Listen for messages from the iframe
+      window.addEventListener('message', (event) => {
         if (event.data === 'formSubmitted') {
           modal.hide(); // Hide the modal after form submission
         }
