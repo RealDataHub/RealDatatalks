@@ -1,290 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-	  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2E348VSQ5G"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-2E348VSQ5G');
-</script>
-	  
-	  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-538VHG6H');</script>
-<!-- End Google Tag Manager -->
-	  
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RealDataTalks Contact Form</title>
-
-    <!--====== Favicon Icon ======-->
-    <link
-      rel="shortcut icon"
-      href="assets/images/re.svg"
-      type="image/svg"
-    />
-
-    <!-- ===== All CSS files ===== -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="assets/css/animate.css" />
-    <link rel="stylesheet" href="assets/css/lineicons.css" />
-    <link rel="stylesheet" href="assets/css/ud-styles.css" />
-	<script>
-      // Initialize a row ID counter
-      let rowID = 0;
-
-      function AddRow() {
-        // Increment the row ID
-        rowID++;
-
-        // Retrieve values from the form
-        const salutation = document.getElementById("salutation").value;
-        const name = document.getElementById("name").value;
-        const surname = document.getElementById("surname").value;
-        const mainQuestion = document.getElementById("mainQuestion").value;
-        const topic = document.getElementById("topic").value;
-        const otherTopic = document.getElementById("otherTopic").value;
-        const phone = document.getElementById("phone").value;
-        const email = document.getElementById("email").value;
-
-        // Check if all required fields are filled
-        if (
-          salutation &&
-          name &&
-          surname &&
-          mainQuestion &&
-          topic &&
-          phone &&
-          email
-        ) {
-          // Send data to Google Apps Script, including the row ID
-          google.script.run.AddRecord(
-            rowID, // Pass the auto-incremented row ID
-            salutation,
-            name,
-            surname,
-            mainQuestion,
-            topic,
-            otherTopic,
-            phone,
-            email
-          );
-
-          // Clear form fields after submission
-          document.getElementById("salutation").value = "";
-          document.getElementById("name").value = "";
-          document.getElementById("surname").value = "";
-          document.getElementById("mainQuestion").value = "";
-          document.getElementById("topic").value = "";
-          document.getElementById("otherTopic").value = "";
-          document.getElementById("phone").value = "";
-          document.getElementById("email").value = "";
-
-          document.getElementById("display_error").innerHTML = "";
-        } else {
-          // Show error message if validation fails
-          document.getElementById("display_error").innerHTML =
-            "Please fill out all required fields!";
-        }
-      }
-
-      // Show/Hide the "Other Topic" field based on topic selection
-      function toggleOtherTopic() {
-        const topic = document.getElementById("topic").value;
-        const otherTopicField = document.getElementById("otherTopic");
-        if (topic === "other") {
-          otherTopicField.style.display = "block";
-        } else {
-          otherTopicField.style.display = "none";
-          otherTopicField.value = "";
-        }
-      }
-    </script> 
-	  
-  </head>
-  <body>
-	  
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-538VHG6H"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
-   <section id="contact" class="ud-contact">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-xl-8 col-lg-7">
-            <div class="ud-contact-content-wrapper">
-              <div class="ud-contact-title">
-                <span>CONTACT US</span>
-                <h2>
-                  Let’s talk about <br />
-                  Love to hear from you!
-                </h2>
-              </div>
-              <div class="ud-contact-info-wrapper">
-                <div class="ud-single-info">
-                  <div class="ud-info-icon">
-                    <i class="lni lni-map-marker"></i>
-                  </div>
-                  <div class="ud-info-meta">
-                    <h5>Our Location</h5>
-                    <p>08005, Poblenou, Barcelona</p>
-                  </div>
-                </div>
-                <div class="ud-single-info">
-                  <div class="ud-info-icon">
-                    <i class="lni lni-envelope"></i>
-                  </div>
-                  <div class="ud-info-meta">
-                    <h5>How Can We Help?</h5>
-                    <p>ask@realdatatalks.com</p>
-                  </div>
-                </div>
-				  
-              </div>
-            </div>
-          </div>
-			
-             <!-- send form 
-source - https://github.com/levinunnink/html-form-to-google-sheet
--->
-			
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <style>
+    /* Styling for default placeholder values */
+    .placeholder {
+      font-style: italic;
+      color: grey;
+    }
+  </style>
+</head>
+<body>
+  <!-- Contact Form -->
   <div class="col-xl-4 col-lg-5">
-  <div class="ud-contact-form-wrapper wow fadeInUp" data-wow-delay=".2s">
-    <h2>Ask us</h2>
-    <form id="contactForm" method="POST" 
-          action="https://script.google.com/macros/s/AKfycbz9F6x2QkoKHjQmoHMXjcCqb9Z27TDJo5gSa6vLiL9CSaNs9a9PaUjPen6-y20DOQFDCQ/exec">
-      <div class="row mb-3">
-		 <div class="col-md-6">
-        <label for="salutation" class="form-label">Salutation</label>
-        <select class="form-select" id="salutation" name="salutation" required>
-          <option value="">Choose...</option>
-          <option value="Sheikh">Sheikh</option>
-          <option value="Hon.">Hon.</option>
-          <option value="Mr.">Mr.</option>
-          <option value="Ms.">Ms.</option>
-          <option value="Mrs.">Mrs.</option>
-          <option value="Sir">Sir</option>
-          <option value="Dr.">Dr.</option>
-          <option value="Prof.">Prof.</option>
-        </select>
-			  </div>
-        <div class="col-md-6">
-          <label for="name" class="form-label">Name</label>
-          <input type="text" class="form-control" id="name" name="name" required>
+    <div class="ud-contact-form-wrapper">
+      <h2>Ask Us</h2>
+      <form id="contactForm" method="POST">
+        
+        <!-- Salutation -->
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="salutation" class="form-label">Salutation</label>
+            <select class="form-select" id="salutation" name="salutation" required>
+              <option value="Mr." selected>Mr.</option>
+              <option value="Sheikh">Sheikh</option>
+              <option value="Hon.">Hon.</option>
+              <option value="Ms.">Ms.</option>
+              <option value="Mrs.">Mrs.</option>
+              <option value="Sir">Sir</option>
+              <option value="Dr.">Dr.</option>
+              <option value="Prof.">Prof.</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control placeholder" id="name" name="name" 
+                   value="Charles" required>
+          </div>
         </div>
-		  </div>
-	<div class="mb-3">
+
+        <!-- Surname -->
+        <div class="mb-3">
           <label for="surname" class="form-label">Surname</label>
-          <input type="text" class="form-control" id="surname" name="surname" required>
-      </div>
-      <div class="mb-3">
-        <label for="mainQuestion" class="form-label">Main Question</label>
-        <textarea class="form-control" id="mainQuestion" name="main_question" rows="3" required></textarea>
-      </div>
-      <div class="mb-3">
-        <label for="topic" class="form-label">Topic</label>
-        <select class="form-select" id="topic" name="topic" required>
-          <option value="">Choose...</option>
-          <option value="immigration and visa">visas and taxes</option>
-          <option value="business establishment or purchase">establish company in Spain</option>
-          <option value="search and buy real estate">buy property</option>
-          <option value="sell purchase">sell property</option>
-          <option value="mortgage and broker">mortgage</option>
-          <option value="design">design and renovation</option>
-          <option value="renovation">renovation</option>
-          <option value="other">property maintenance</option>
-        </select>
-        <input type="text" class="form-control mt-2" id="otherTopic" name="other_topic" placeholder="Please specify" style="display: none;">
-      </div>
-      <div class="mb-3">
-        <label for="phone" class="form-label">Phone</label>
-        <input type="tel" class="form-control" id="phone" name="phone" required>
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email" required>
-      </div>
-       <div class="form-group">
-          <input type="button" value="Submit" class="btn btn-primary" onclick="AddRow()" />
+          <input type="text" class="form-control placeholder" id="surname" name="surname" 
+                 value="Cabernet y Agriorifiko" required>
+        </div>
+
+        <!-- Main Question -->
+        <div class="mb-3">
+          <label for="mainQuestion" class="form-label">Main Question</label>
+          <textarea class="form-control placeholder" id="mainQuestion" name="main_question" rows="3" required>looking for legal support to buy a villa</textarea>
+        </div>
+
+        <!-- Topic -->
+        <div class="mb-3">
+          <label for="topic" class="form-label">Topic</label>
+          <select class="form-select" id="topic" name="topic" required>
+            <option value="">Choose...</option>
+            <option value="immigration and visa">Visas and Taxes</option>
+            <option value="business establishment or purchase">Establish Company in Spain</option>
+            <option value="search and buy real estate" selected>Buy Property</option>
+            <option value="sell purchase">Sell Property</option>
+            <option value="mortgage and broker">Mortgage</option>
+            <option value="design">Design and Renovation</option>
+            <option value="renovation">Renovation</option>
+            <option value="other">Property Maintenance</option>
+          </select>
+          <input type="text" class="form-control mt-2" id="otherTopic" name="other_topic" 
+                 placeholder="Please specify" style="display: none;">
+        </div>
+
+        <!-- Phone -->
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone</label>
+          <input type="tel" class="form-control placeholder" id="phone" name="phone" 
+                 value="+33658235871" required>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control placeholder" id="email" name="email" 
+                 value="cabernetXXXi@yahoo.fr" required>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Submit</button>
           <div id="display_error" style="color: red;"></div>
         </div>
-    </form>
-  </div>
-</div>
-
-<!-- ====== Contact End ====== -->
-<!-- Button trigger modal -->
-<button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary" data-mdb-modal-init data-mdb-target="#cookieconsent3">
-    Launch cookie consent
-</button>
-
-<!-- Modal -->
-<div class="modal top fade" id="cookieconsent3" tabindex="-1" aria-labelledby="cookieconsentLabel3" aria-hidden="true" data-mdb-backdrop="static" data-mdb-keyboard="false">
-    <div class="modal-dialog">
-        <div class="modal-content d-block text-start">
-            <div class="modal-header d-block ">
-                <h5 class="modal-title" id="cookieconsentLabel3">Cookies & Privacy</h5>
-                <p>
-                    This website uses cookies to ensure you get the best experience on our website.
-                </p>
-                <p>
-                    <a href="#">Read more about cookies</a>
-                </p>
-            </div>
-            <div class="modal-body">
-                <!-- Necessary checkbox -->
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="necessary" checked />
-                    <label class="form-check-label" for="necessary">
-                        <p>
-                            <strong>Necessary cookies</strong>
-                            <muted>help with the basic functionality of our website, e.g remember if you gave consent to cookies.</muted>
-                        </p>
-                    </label>
-                </div>
-                <!-- Analytical checkbox -->
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="analytical" />
-                    <label class="form-check-label" for="analytical">
-                        <p>
-                            <strong>Analytical cookies</strong>
-                            <muted>make it possible to gather statistics about the use and trafiic on our website, so we can make it better.</muted>
-                        </p>
-                    </label>
-                </div>
-                <!-- Marketing checkbox -->
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="marketing" />
-                    <label class="form-check-label" for="marketing">
-                        <p>
-                            <strong>Marketing cookies</strong>
-                            <muted>make it possible to show you more relevant social media content and advertisements on our website and other platforms.</muted>
-                        </p>
-                    </label>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-primary" data-mdb-dismiss="modal">
-                    Accept necessary
-                </button>
-                <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary" data-mdb-dismiss="modal">
-                    Accept all
-                </button>
-            </div>
-        </div>
+      </form>
     </div>
-</div>
-    <!-- ====== All Javascript Files ====== -->
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/main.js"></script>
-  </body>
+  </div>
+
+<!-- Script -->
+  <script>
+    const form = document.getElementById('contactForm');
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbycCEABZ75veoNniMdVrhAzQRKxTB5nQ_wFK8WqstdYeKMw3I-Ma_cuBX_gWQv9c3KR/exec';
+
+  form.addEventListener('submit', (e) => {
+  e.preventDefault(); // Prevent default form submission
+
+  const formData = new FormData(form);
+  const urlEncodedData = new URLSearchParams(formData).toString();
+
+  fetch(scriptURL, { 
+    method: 'POST',
+    body: urlEncodedData,  // Send data as URL-encoded format
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+  })
+  .then(response => {
+    alert('Form submitted successfully!');
+    form.reset(); // Reset the form after submission
+  })
+  .catch(error => {
+    alert('Error submitting the form: ' + error.message);
+  });
+});
+
+    
+  </script>
+	<!-- End Script -->
+</body>
 </html>
