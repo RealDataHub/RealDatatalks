@@ -90,31 +90,32 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const modal = new bootstrap.Modal(document.getElementById('registrationModal'));
-      const mainContent = document.getElementById('mainContent');
-      const iframe = document.getElementById('registrationIframe');
-      const closeButton = document.querySelector('.btn-close');
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = new bootstrap.Modal(document.getElementById('registrationModal'));
+    const mainContent = document.getElementById('mainContent');
+    const iframe = document.getElementById('registrationIframe');
+    const closeButton = document.querySelector('.btn-close');
 
-      // Show the modal and disable main content
-      modal.show();
-      mainContent.classList.add('disabled-content');
+    // Show the modal and disable main content
+    modal.show();
+    mainContent.classList.add('disabled-content');
 
-      // Disable modal close button
-      closeButton.addEventListener('click', (e) => {
-        e.preventDefault();  // Prevent modal from closing
-      });
-
-      // Listen for form submission event inside the iframe
-      window.addEventListener('message', (event) => {
-        // Ensure the message comes from the iframe
-        if (event.origin === window.location.origin && event.data === 'formSubmitted') {
-          modal.hide(); // Hide the modal after form submission
-          mainContent.classList.remove('disabled-content'); // Enable main content again
-        }
-      });
+    // Disable modal close button
+    closeButton.addEventListener('click', (e) => {
+      e.preventDefault();  // Prevent modal from closing
     });
-  </script>
+
+    // Listen for form submission event inside the iframe
+    window.addEventListener('message', (event) => {
+      // Ensure the message comes from the iframe (check event origin and data)
+      if (event.origin === window.location.origin && event.data.action === 'closePopup') {
+        modal.hide(); // Hide the modal after form submission
+        mainContent.classList.remove('disabled-content'); // Enable main content again
+      }
+    });
+  });
+</script>
+
 
 </body>
 </html>
