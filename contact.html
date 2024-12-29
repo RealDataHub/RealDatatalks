@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> <head>
 <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-2E348VSQ5G"></script>
   <script>
@@ -48,11 +48,34 @@
       font-size: 14px;
       padding: 10px 20px;
     }
-  .vh-50 {
-}
-  </style>
+
+    .vh-50 {
+      height: 50vh;
+    }
+
+    /* Styling for the iframe container (background content) */
+    .iframe-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* Place it behind the form content */
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style> 
 </head>
 <body>
+	<!-- Background Map or Content -->
+  <div class="iframe-container">
+    <iframe src="REProject_ColorMap_20241229.html" title="Map Background"></iframe>
+  </div>
+	
   <div class="container">
     <!-- Contact Form -->
     <div class="row justify-content-center">
@@ -61,7 +84,7 @@
           <!-- Contact Form Motto -->
           <div class="d-flex flex-column justify-content-center align-items-center vh-50 text-center">
             <h1 class="ud-hero-title">
-              Real Data Talks
+              Real Data Talks' Project Bank
             </h1>
             <h3 class="ud-hero-desc" style="margin-bottom: 10px;">
               Real Estate Projects Hub<br>
@@ -70,7 +93,7 @@
             </h3>
           </div>
 
-          <h2 class="text-center mb-4">Ask Us</h2>
+          <h2 class="text-center mb-4">Fill the form to get access to our projects</h2>
           <form id="contactForm" method="POST">
             <div class="row mb-3">
               <div class="col-md-6">
@@ -133,7 +156,7 @@
               <div id="display_error" style="color: red;"></div>
             </div>
           </form>
-          <h2 class="text-center mt-4">and we respond within 24h!</h2>
+          <h2 class="text-center mt-4">for any details we respond within 24h!</h2>
         </div>
       </div>
     </div>
