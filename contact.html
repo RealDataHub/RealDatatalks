@@ -118,6 +118,7 @@ iframe {
 
           <h2 class="text-center mb-4">fill the form to get access to our projects</h2>
           <form id="contactForm" method="POST">
+			  <!-- Salutation and Name -->
             <div class="row mb-3">
               <div class="col-md-6">
                 <label for="salutation" class="form-label">Salutation</label>
@@ -134,18 +135,18 @@ iframe {
               </div>
               <div class="col-md-6">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control placeholder" id="name" name="name" value="Lucky" required>
+                <input type="text" class="form-control placeholder" id="name" name="name" value="Justname" required>
               </div>
             </div>
 
             <div class="mb-3">
               <label for="surname" class="form-label">Surname</label>
-              <input type="text" class="form-control placeholder" id="surname" name="surname" value="Lucciano" required>
+              <input type="text" class="form-control placeholder" id="surname" name="surname" value="Justsurname" required>
             </div>
 
             <div class="mb-3">
               <label for="mainQuestion" class="form-label">Main Question</label>
-              <textarea class="form-control placeholder" id="mainQuestion" name="main_question" rows="3" required>looking for legal support to buy a villa on Ibiza</textarea>
+              <textarea class="form-control placeholder" id="mainQuestion" name="main_question" rows="3" required>just a regular request</textarea>
             </div>
 
             <div class="mb-3">
@@ -171,7 +172,7 @@ iframe {
 
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control placeholder" id="email" name="email" value="luckylucciano@yahoo.com" required>
+              <input type="email" class="form-control placeholder" id="email" name="email" value="justanemail@yahoo.com" required>
             </div>
 
             <div class="form-group text-center">
@@ -187,39 +188,71 @@ iframe {
 
   <!-- Script -->
   <script>
-    const form = document.getElementById('contactForm');
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbycCEABZ75veoNniMdVrhAzQRKxTB5nQ_wFK8WqstdYeKMw3I-Ma_cuBX_gWQv9c3KR/exec';
+  const form = document.getElementById('contactForm');
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbycCEABZ75veoNniMdVrhAzQRKxTB5nQ_wFK8WqstdYeKMw3I-Ma_cuBX_gWQv9c3KR/exec';
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault(); // Prevent default form submission
+  form.addEventListener('submit', (e) => {
+    e.preventDefault(); // Prevent default form submission
 
-      const formData = new FormData(form);
+    // Get form values
+    const name = document.getElementById('name').value.trim();
+    const surname = document.getElementById('surname').value.trim();
+    const mainQuestion = document.getElementById('mainQuestion').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const topic = document.getElementById('topic').value;
 
-      // Convert FormData to an object
-      const data = Object.fromEntries(formData.entries());
+    // Default placeholder values for validation
+    const defaultValues = {
+      name: "justname",
+      surname: "justsurname",
+      mainQuestion: "just a regular request",
+      phone: "+1 718 111 1111",
+      email: "justanemail@yahoo.com",
+    };
 
-      // Force phone number to be a string
-      data.phone = `'${data.phone}`; // Add a leading single quote to make it a string in Google Sheets
+    // Check if any field contains the default placeholder value or is empty
+    if (
+      name === defaultValues.name || !name ||
+      surname === defaultValues.surname || !surname ||
+      mainQuestion === defaultValues.mainQuestion || !mainQuestion ||
+      phone === defaultValues.phone || !phone ||
+      email === defaultValues.email || !email ||
+      topic === ""
+    ) {
+      alert('Please fill all fields and try again.');
+      return;
+    }
 
-      fetch(scriptURL, { 
-        method: 'POST',
-        body: new URLSearchParams(data), // Convert object back to URLSearchParams
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      })
-      .then(response => {
-        alert('Form submitted successfully!');
-        form.reset(); // Reset the form after submission
+    const formData = new FormData(form);
 
-        // Redirect to projects.html after successful submission
-        window.location.href = 'projects.html'; 
-      })
-      .catch(error => {
-        alert('Error submitting the form: ' + error.message);
-      });
+    // Convert FormData to an object
+    const data = Object.fromEntries(formData.entries());
+
+    // Force phone number to be a string
+    data.phone = `'${data.phone}`; // Add a leading single quote to make it a string in Google Sheets
+
+    fetch(scriptURL, {
+      method: 'POST',
+      body: new URLSearchParams(data), // Convert object back to URLSearchParams
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    })
+    .then(response => {
+      alert('Form submitted successfully!');
+      form.reset(); // Reset the form after submission
+
+      // Redirect to projects.html after successful submission
+      window.location.href = 'projects.html';
+    })
+    .catch(error => {
+      alert('Error submitting the form: ' + error.message);
     });
-  </script>
+  });
+</script>
+
+
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
