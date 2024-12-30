@@ -32,25 +32,48 @@
                     left: 0.0%;
                     top: 0.0%;
                 }
+				.info-box {
+            position: absolute;
+            bottom: 35px;
+            right: 0px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 5px;
+            font-size: 9px;
+            border-radius: 0px;
+            z-index: 1000;
+            width: 400px; /* Default width */
+            transition: width 0.3s ease; /* Smooth resizing */
+        }
             </style>
         
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 </head>
 <body>
-    
-    
-    <div style="position: absolute; 
-               bottom: 35px; right: 0px;
-               background-color: rgba(255, 255, 255, 0.5); 
-               padding: 5px; 
-               font-size: 12px; 
-               border-radius: 0px;
-               z-index: 1000;
-               width: 400px;">
+
+    <div class="info-box">
         <strong>MARKER DIAMETER</strong> means total investment amount; 
         <br><strong>MARKER COLOR</strong> means total income before tax in thousands of euros, 
         <br>yellow - the lowest, violet - the highest
     </div>
+
+    <script>
+        function adjustInfoBoxWidth() {
+            const infoBox = document.querySelector('.info-box');
+            const isPortrait = window.innerHeight > window.innerWidth;
+            const screenWidth = window.innerWidth;
+
+            // Set width based on screen orientation
+            infoBox.style.width = isPortrait 
+                ? `${Math.round(screenWidth * 0.3)}px` // 30% of screen width for vertical orientation
+                : `${Math.round(screenWidth * 0.2)}px`; // 20% of screen width for horizontal orientation
+        }
+
+        // Adjust width on load and resize
+        window.addEventListener('load', adjustInfoBoxWidth);
+        window.addEventListener('resize', adjustInfoBoxWidth);
+    </script>
+		
+
     
     
             <div class="folium-map" id="map_e1f3350232cac1cffa20063e49a62611" ></div>
@@ -4573,12 +4596,32 @@
         .orient("top")
         .tickSize(1)
         .tickValues([82.62, 3560.3200000000015]);
+// change
+// Detect screen orientation and calculate width
+function calculateLegendWidth() {
+    // Check if the screen is horizontal (width > height)
+    var isHorizontal = window.innerWidth > window.innerHeight;
 
-    color_map_af4efeaa19264cff7586b9f9729f788d.svg = d3.select(".legend.leaflet-control").append("svg")
-        .attr("id", 'legend')
-        .attr("width", 450)
-        .attr("height", 40);
+    // Calculate the width as a percentage of the screen width
+    var widthPercentage = isHorizontal ? 0.2 : 0.3; // 20% if horizontal, 30% if vertical
+    return Math.round(window.innerWidth * widthPercentage);
+}
 
+// Set up the SVG dynamically
+var legendWidth = calculateLegendWidth();
+color_map_af4efeaa19264cff7586b9f9729f788d.svg = d3.select(".legend.leaflet-control").append("svg")
+    .attr("id", 'legend')
+    .attr("width", legendWidth) // Dynamic width
+    .attr("height", 40);
+
+// Update legend width on window resize
+window.addEventListener('resize', function() {
+    var newLegendWidth = calculateLegendWidth();
+    color_map_af4efeaa19264cff7586b9f9729f788d.svg.attr("width", newLegendWidth);
+});
+
+	// change
+	
     color_map_af4efeaa19264cff7586b9f9729f788d.g = color_map_af4efeaa19264cff7586b9f9729f788d.svg.append("g")
         .attr("class", "key")
         .attr("transform", "translate(25,16)");
