@@ -33,39 +33,26 @@
   
   <style>
    /* Styling for default placeholder values */
-.placeholder {
-  font-style: italic;
-  color: grey;
-}
+/* Styling for the input fields to make the text always black */
+    .form-control {
+      font-style: normal;
+      color: black;
+    }
 
-/* Adding space between form inputs */
-.mb-3 {
-  margin-bottom: 1.5rem;
-}
+    /* Add margin between inputs */
+    .mb-3 {
+      margin-bottom: 1.5rem;
+    }
 
-/* Styling for the submit button */
-.btn {
-  font-size: 14px;
-  padding: 10px 20px;
-}
+    /* Styling for the submit button */
+    .btn {
+      font-size: 14px;
+      padding: 10px 20px;
+    }
 
-/* Remove margins and paddings for the title container */
-.ud-contact-form-wrapper .d-flex {
-  margin-top: 0; /* Remove top margin */
-  margin-bottom: 0; /* Remove bottom margin */
-  padding-top: 0; /* Remove padding above */
-  padding-bottom: 0; /* Remove padding below */
-}
-
-.ud-hero-title {
-  margin-top: 0; /* Remove any top margin */
-  margin-bottom: 0; /* Remove any bottom margin */
-}
-
-/* Optionally, adjust the vh-50 class for better form alignment */
-.vh-50 {
-  height: 20vh; /* Remove fixed height */
-}
+    .vh-50 {
+      height: 50vh;
+    }
 /* Styling for the iframe container (background content) */
 .iframe-container {
   position: absolute;
@@ -135,18 +122,18 @@ iframe {
               </div>
               <div class="col-md-6">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control placeholder" id="name" name="name" value="Justname" required>
+                <input type="text" class="form-control" id="name" name="name" value="Justname" required>
               </div>
             </div>
 
             <div class="mb-3">
               <label for="surname" class="form-label">Surname</label>
-              <input type="text" class="form-control placeholder" id="surname" name="surname" value="Justsurname" required>
+              <input type="text" class="form-control" id="surname" name="surname" value="Justsurname" required>
             </div>
 
             <div class="mb-3">
               <label for="mainQuestion" class="form-label">Main Question</label>
-              <textarea class="form-control placeholder" id="mainQuestion" name="main_question" rows="3" required>just a regular request</textarea>
+              <textarea class="form-control" id="mainQuestion" name="main_question" rows="3" required>just a regular request</textarea>
             </div>
 
             <div class="mb-3">
@@ -167,12 +154,12 @@ iframe {
 
             <div class="mb-3">
               <label for="phone" class="form-label">Phone</label>
-              <input type="tel" class="form-control placeholder" id="phone" name="phone" value="+1 718 111 1111" required>
+              <input type="tel" class="form-control" id="phone" name="phone" value="+1 718 111 1111" required>
             </div>
 
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control placeholder" id="email" name="email" value="justanemail@yahoo.com" required>
+              <input type="email" class="form-control" id="email" name="email" value="justanemail@yahoo.com" required>
             </div>
 
             <div class="form-group text-center">
