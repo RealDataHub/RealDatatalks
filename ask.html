@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> RealDataTalks Request Form</title>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-2E348VSQ5G"></script>
   <script>
@@ -17,12 +21,6 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-538VHG6H');</script>
   <!-- End Google Tag Manager -->
-
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RealDataTalks Request Form</title>
-  
   <!-- Bootstrap CSS -->
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
@@ -33,13 +31,13 @@
   <link rel="shortcut icon" href="assets/images/re.svg" type="image/svg" />
   
   <style>
-    /* Styling for default placeholder values */
-    .placeholder {
-      font-style: italic;
-      color: grey;
+    /* Styling for the input fields to make the text always black */
+    .form-control {
+      font-style: normal;
+      color: black;
     }
 
-    /* Adding space between form inputs */
+    /* Add margin between inputs */
     .mb-3 {
       margin-bottom: 1.5rem;
     }
@@ -49,8 +47,10 @@
       font-size: 14px;
       padding: 10px 20px;
     }
-  .vh-50 {
-}
+
+    .vh-50 {
+      height: 50vh;
+    }
   </style>
 </head>
 <body>
@@ -59,22 +59,18 @@
     <div class="row justify-content-center">
       <div class="col-xl-6 col-lg-8">
         <div class="ud-contact-form-wrapper border rounded p-4 mt-5">
-			<!-- Contact Form Motto -->
-			
-			<div class="d-flex flex-column justify-content-center align-items-center vh-50 text-center">
-  <h1 class="ud-hero-title">
-    Real Data Talks
-  </h1>
-  <h3 class="ud-hero-desc" style="margin-bottom: 10px;">
-    Real Estate Projects Hub<br>
-    <span style="font-size: 0.75em;">Big Data &gt; Business Insights &gt; Investments</span><br>
-    <span style="font-size: 0.5em;">Powering Real Estate Projects with Data Science</span>
-  </h3>
-</div>
-			<!-- Contact Form Text -->
+          <div class="d-flex flex-column justify-content-center align-items-center vh-50 text-center">
+            <h1 class="ud-hero-title">
+              Real Data Talks
+            </h1>
+            <h3 class="ud-hero-desc" style="margin-bottom: 10px;">
+              Real Estate Projects Hub<br>
+              <span style="font-size: 0.75em;">Big Data &gt; Business Insights &gt; Investments</span><br>
+              <span style="font-size: 0.5em;">Powering Real Estate Projects with Data Science</span>
+            </h3>
+          </div>
           <h2 class="text-center mb-4">Ask Us</h2>
           <form id="contactForm" method="POST">
-			  <!-- Salutation and Name -->
             <div class="row mb-3">
               <div class="col-md-6">
                 <label for="salutation" class="form-label">Salutation</label>
@@ -91,18 +87,18 @@
               </div>
               <div class="col-md-6">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control placeholder" id="name" name="name" value="Justname" required>
+                <input type="text" class="form-control" id="name" name="name" value="Justname" required>
               </div>
             </div>
 
             <div class="mb-3">
               <label for="surname" class="form-label">Surname</label>
-              <input type="text" class="form-control placeholder" id="surname" name="surname" value="Justsurname" required>
+              <input type="text" class="form-control" id="surname" name="surname" value="Justsurname" required>
             </div>
 
             <div class="mb-3">
               <label for="mainQuestion" class="form-label">Main Question</label>
-              <textarea class="form-control placeholder" id="mainQuestion" name="main_question" rows="3" required>just a regular request</textarea>
+              <textarea class="form-control" id="mainQuestion" name="main_question" rows="3" required>just a regular request</textarea>
             </div>
 
             <div class="mb-3">
@@ -123,12 +119,12 @@
 
             <div class="mb-3">
               <label for="phone" class="form-label">Phone</label>
-              <input type="tel" class="form-control placeholder" id="phone" name="phone" value="+1 718 111 1111" required>
+              <input type="tel" class="form-control" id="phone" name="phone" value="+1 718 111 1111" required>
             </div>
 
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control placeholder" id="email" name="email" value="justanemail@yahoo.com" required>
+              <input type="email" class="form-control" id="email" name="email" value="justanemail@yahoo.com" required>
             </div>
 
             <div class="form-group text-center">
@@ -142,13 +138,12 @@
     </div>
   </div>
 
-  <!-- Script -->
   <script>
   const form = document.getElementById('contactForm');
   const scriptURL = 'https://script.google.com/macros/s/AKfycbycCEABZ75veoNniMdVrhAzQRKxTB5nQ_wFK8WqstdYeKMw3I-Ma_cuBX_gWQv9c3KR/exec';
 
   form.addEventListener('submit', (e) => {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
 
     // Get form values
     const name = document.getElementById('name').value.trim();
@@ -158,7 +153,6 @@
     const email = document.getElementById('email').value.trim();
     const topic = document.getElementById('topic').value;
 
-    // Default placeholder values for validation
     const defaultValues = {
       name: "justname",
       surname: "justsurname",
@@ -167,7 +161,6 @@
       email: "justanemail@yahoo.com",
     };
 
-    // Check if any field contains the default placeholder value or is empty
     if (
       name === defaultValues.name || !name ||
       surname === defaultValues.surname || !surname ||
@@ -181,32 +174,26 @@
     }
 
     const formData = new FormData(form);
-
-    // Convert FormData to an object
     const data = Object.fromEntries(formData.entries());
-
-    // Force phone number to be a string
-    data.phone = `'${data.phone}`; // Add a leading single quote to make it a string in Google Sheets
+    data.phone = `'${data.phone}`;
 
     fetch(scriptURL, {
       method: 'POST',
-      body: new URLSearchParams(data), // Convert object back to URLSearchParams
+      body: new URLSearchParams(data),
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
     })
     .then(response => {
       alert('Form submitted successfully!');
-      form.reset(); // Reset the form after submission
-		      // Close the window
-      window.close();
+      form.reset();
+  		window.location.href = 'success.html';  // Redirect to success.html
     })
     .catch(error => {
       alert('Error submitting the form: ' + error.message);
     });
   });
-</script>
-  <!-- End Script -->
+  </script>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
